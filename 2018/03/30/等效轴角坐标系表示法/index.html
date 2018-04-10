@@ -88,7 +88,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2018/03/30/等效轴角坐标系表示法/等效轴角坐标系表示法1.jpg">
 <meta property="og:image" content="http://yoursite.com/2018/03/30/等效轴角坐标系表示法/等效轴角坐标系表示法2.jpg">
-<meta property="og:updated_time" content="2018-03-30T09:13:43.650Z">
+<meta property="og:updated_time" content="2018-04-10T12:14:56.557Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="等效轴角坐标系表示法">
 <meta name="twitter:description" content="本文主要讲述等效轴角坐标系表示法的导出过程，其中涉及到罗德里格斯公式（Rodrigues’ rotation formula）的推导，此记。">
@@ -403,7 +403,8 @@
         <p>本文主要讲述等效轴角坐标系表示法的导出过程，其中涉及到罗德里格斯公式（<a href="https://en.wikipedia.org/wiki/Rodrigues%27_rotation_formula" target="_blank" rel="noopener">Rodrigues’ rotation formula</a>）的推导，此记。</p>
 <a id="more"></a>
 <p>首先将坐标系 $B$ 和一个已知参考坐标系 $A$ 重合。将 $B$ 绕矢量 $^A\hat{K}$ 按右手定则旋转 $\theta$ 角度。<br>等效旋转矩阵的表示形式推导：</p>
-<p>目标：将向量 $v=(x,y,z)$ 绕一般方向（而不是主轴方向） $\hat{r}$ （假设 $\hat{r}$ 是单位向量，如果不是，先进行单位化）旋转 $\theta$ 角度，如下图：<br><img src="/2018/03/30/等效轴角坐标系表示法/等效轴角坐标系表示法1.jpg" alt="等效轴角坐标系表示法"></p>
+<p>目标：将向量 $v=(x,y,z)$ 绕一般方向（而不是主轴方向） $\hat{r}$ （假设 $\hat{r}$ 是单位向量，如果不是，先进行单位化）旋转 $\theta$ 角度，如图1所示。</p>
+<img src="/2018/03/30/等效轴角坐标系表示法/等效轴角坐标系表示法1.jpg" width="400" height="268" title="图1 旋转立体示意图">
 <p>首先，将向量 $v$ 分解为两部分：平行于 $\hat{r}$ 的 $v_{||}$ 和垂直于 $\hat{r}$ 的 $v_{\bot}$，并且很容易可以得到:</p>
 <p>$$v_{||}=(v\cdot \hat{r})\hat{r}$$</p>
 <p>$$v=v_{||}+v_{\bot}$$</p>
@@ -417,8 +418,8 @@
 <p>$$T(v)=v_{||}+T(v_{\bot})$$</p>
 <p>其中， $T(v_{\bot})$ 是唯一需要求解的量。所以我们建立旋转平面上的两个基向量(如下图)，把 $v_{\bot}$ 作为第一个基向量，第二个基向量用</p>
 <p>\begin{align}<br>w &amp; =\hat{r}\times v_{\bot}\\<br> &amp; = \hat{r}\times v<br>\end{align}</p>
-<p><img src="/2018/03/30/等效轴角坐标系表示法/等效轴角坐标系表示法2.jpg" alt="等效轴角坐标系表示法"></p>
-<p>根据上图，我们可以得到：</p>
+<img src="/2018/03/30/等效轴角坐标系表示法/等效轴角坐标系表示法2.jpg" width="468" height="330" title="图2 $v_{\bot}$旋转平面示意图">
+<p>根据图2，我们可以得到：</p>
 <p>\begin{align}<br>T(v_{\bot}) &amp; = v_{\bot}cos\theta+ w sin\theta\\<br>&amp;= v_{\bot}cos\theta+(\hat{r}\times v)sin\theta<br>\end{align}</p>
 <p>因此，</p>
 <p>\begin{align}<br>T(v) &amp; =v_{||}+T(v_{\bot})\\<br>&amp;=(v\cdot \hat{r})\hat{r}+ v_{\bot}cos\theta+ (\hat{r}\times v)sin\theta\\<br>&amp;=(v\cdot \hat{r})\hat{r}+ [v-(v\cdot \hat{r})\hat{r}]cos\theta+(\hat{r}\times v)sin\theta\\<br>&amp;=(v\cdot \hat{r})\hat{r}+ vcos\theta- (v\cdot \hat{r})\hat{r}cos\theta+ (\hat{r}\times v)sin\theta\\<br>&amp;=(1-cos \theta)(v\cdot \hat{r})\hat{r}+ v cos\theta+ (\hat{r}\times v)sin\theta\end{align}</p>
@@ -489,8 +490,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/03/30/test-new-post/" rel="next" title="Test">
-                <i class="fa fa-chevron-left"></i> Test
+              <a href="/2018/03/30/hello-world/" rel="next" title="Hello World">
+                <i class="fa fa-chevron-left"></i> Hello World
               </a>
             
           </div>
