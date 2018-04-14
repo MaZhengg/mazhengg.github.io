@@ -33,6 +33,14 @@
       </tags>
   </entry>
   <entry>
+    <title><![CDATA[Hello World]]></title>
+    <url>%2F2018%2F03%2F30%2Fhello-world%2F</url>
+    <content type="text"><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post1$ hexo new "My New Post" More info: Writing Run server1$ hexo server -p 4111 More info: Server Generate static files1$ hexo generate More info: Generating Deploy to remote sites1$ hexo deploy More info: Deployment write the latex form1the equation $$x=\sum_&#123;i=1&#125;^nx_i$$ is bla... $$\sum_{i=1}^n$$ insert figure1&#123;% img /等效轴角坐标系表示法/等效轴角坐标系表示法1.jpg 400 268 图1 旋转立体示意图 %&#125;]]></content>
+      <categories>
+        <category>Testing</category>
+      </categories>
+  </entry>
+  <entry>
     <title><![CDATA[Test]]></title>
     <url>%2F2018%2F03%2F30%2Ftest-new-post%2F</url>
     <content type="text"><![CDATA[Testing for new post]]></content>
@@ -43,13 +51,5 @@
         <tag>testing</tag>
         <tag>another tag</tag>
       </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[Hello World]]></title>
-    <url>%2F2018%2F03%2F30%2Fhello-world%2F</url>
-    <content type="text"><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post1$ hexo new "My New Post" More info: Writing Run server1$ hexo server -p 4111 More info: Server Generate static files1$ hexo generate More info: Generating Deploy to remote sites1$ hexo deploy More info: Deployment write the latex form1the equation $$x=\sum_&#123;i=1&#125;^nx_i$$ is bla... $$\sum_{i=1}^n$$ insert figure1&#123;% img /等效轴角坐标系表示法/等效轴角坐标系表示法1.jpg 400 268 图1 旋转立体示意图 %&#125;]]></content>
-      <categories>
-        <category>Testing</category>
-      </categories>
   </entry>
 </search>
