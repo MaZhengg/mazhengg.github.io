@@ -1,6 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[ROS下IMU数据解析并发布-JY901（MPU9250）]]></title>
+    <url>%2F2018%2F05%2F24%2FROS%E4%B8%8BIMU%E6%95%B0%E6%8D%AE%E8%A7%A3%E6%9E%90%E5%B9%B6%E5%8F%91%E5%B8%83%2F</url>
+    <content type="text"><![CDATA[进行ROS下机器人系统开发，需要用到IMU数据，所以需要做IMU数据解析，IMU设备是JY901（内置MPU9250）芯片，设备利用USB转TTL转换，采用了MZ-RS24T转换器，转换芯片为FT232RL，本文想要系统记录从IMU传出数据到数据转换，再到ROS下数据解析并发布IMU话题的过程及（部分）实现方法，此记。 设备连接及通信接口测试设备连接设备连接就是通过MZ-RS24T六合一转换器将TTL电平转换为USB，其中需要注意的就是将发送和接收线交叉连接，如图1所示。 windows下测试设备刚拿到设备需要确认设备是否可用，所以考虑在windows系统下测试，设备应该附带在windows的测试软件（miniIMUV4.3.11）和串口调试软件（SSCOM32），这些可以在他们的官方论坛维特智能上下载到，也可以直接到百度网盘下载，下载链接。windows下的驱动程序可以自动搜索安装就不多说了。 一些具体的测试方法在下载资料的使用说明中有具体的介绍，安装完驱动，确定能识别硬件，验证方法到我的电脑–管理–设备管理器–端口，一般显示为USB Serial Port(COM#)，然后打开miniIMUV4.3.11，可以正常显示在配置中选定的数据，说明硬件正常。 Linux下通信测试插入设备后，通过查看电脑的输入端口确定usb串口号，1ls /dev/tty* 查询到串口名为”/dev/ttyUSB0”，这样说明通信接口正常识别，后边会用的到。 IMU数据解析JY901模块是一款高精度的姿态测量模块，能够测量被测物体的姿态角度，以欧拉角或者四元素的方式输出。 模块的数据采用16进制的方式进行传输（在使用说明书中也有说明），这种方式的优点是效率高，可以用很少的字节传输需要的数据，比如一个数据1.523，如果用16进制方式传送的话，2个字节就够了，而用ascii码的话，需要5个字节，在需要大量数据传输的时候就比较浪费有限的带宽了。而16进制数据的缺点呢，就是可读性不强，不像Ascii码那样，直接就能读出数据了。 16进制数据传输的原理是这样的，先要确定数据的表示范围，然后是每个数据可用的字节数。比如角度的数据，每个角度的数据范围是±180度，而2个字节16进制数的表示范围是-32767-32768之间，那么我们就把±180的数据映射到±32768之间。假设原理的数据是x，变换以后的数据是y，那么y=x/180*32768。2个字节能表示的最小精度是1/32768*180=0.0055°，这对于角度的精度来说也够用了。下面具体讲解析的方法。在windows下先通过串口调试助手SSCOM3.2看模块的原始数据，打开相应的串口，注意要选择好正确的波特率，并且将模块的显示模式勾选为HEX显示。如图3 所示。 这里我们以只输出四元数数据为例来说明解析方法，由于这里我设置为只输出四元数数据，所以只有55 59开头的数据，例如55 59 F6 7A 94 00 9F 00 8B 23 FF。如果能看到这种以55 51, 55 52 或者55 53一直到55 59， 55 5A开头的数据，说明串口能够正常接收到数据了。根据使用说明书中的介绍，四元数的数据形式为 那么上述数据中F6 7A就是Q0的数据， 94 00就是Q1的数据，9F 00就是Q2的数据，8B 23就是Q3的数据，FF就是校验和。在Q0的数据中，F6是Q0L,7A是Q0H，那么完整的16进制数据应该是7AF6，这个16进制的数据应该如何表示为十进制的Q0数据就需要我们按照图5中的方法进行解析。 以上是在window中的串口工具读取到的数据，在Linux下我们通过serial功能包读取串口数据，下载地址Github。我们读取到的数据一般保存在一个std::string类型的变量中，比如strRead,这里我们首先将读取到的string数据转换为十六进制的字符串， 1234567891011121314std::string string_to_hex(const std::string&amp; input)&#123; static const char* const lut = "0123456789ABCDEF"; size_t len = input.length(); std::string output; output.reserve(2 * len); for (size_t i = 1; i &lt; len; ++i) &#123; const unsigned char c = input[i]; output.push_back(lut[c &gt;&gt; 4]); output.push_back(lut[c &amp; 15]); &#125; return output;&#125; 123string read;string strResult;strResult = string_to_hex(strRead); 然后我们需要根据一个数据包的报头来判断数据的开始，也就是找到55所在的位置，1data_package_start = strResult.find("55"); 然后我们将这样一组数据读取并保存到一个vector容器中，比如oValueList中123456789101112type define unsigned short WORD;vector&lt;WORD&gt; oValueList;string strResultTemp;WORD wordValue;for (int k = 0; k &lt; 8; k++)&#123; strResultTemp = strResult.substr(data_package_start + 4 +2*k, 2); wordValue = hex2int(strResultTemp); oValueList.push_back(wordValue);&#125; 利用string类的函数stbstr()，提取从55 59之后（data_package_start+4）开始的2个字符，直到校验和之前。这样我们就将原来在string类型中以十六进制形式存储的两个字符（比如F6）转存为unsigned short类型（占两个字节），并且push进vector容器中（oValueList[0]）。这样就可以通过vector容器的索引号得到四元数中各个量(Q0,Q1,Q2,Q3)的高低字节（Q0L,Q0H,Q1L,Q1H……）。然后再根据图5显示的四元数的计算方法得到相应的四元数数值。1234double Q0 = (short)(((short)oValueList[1]&lt;&lt;8)|oValueList[0])/32768.0;double Q1 = (short)(((short)oValueList[3]&lt;&lt;8)|oValueList[2])/32768.0;double Q2 = (short)(((short)oValueList[5]&lt;&lt;8)|oValueList[4])/32768.0;double Q3 = (short)(((short)oValueList[7]&lt;&lt;8)|oValueList[6])/32768.0; 发布IMU话题有了四元数数据之后，就可以通过定义一个IMU数据类型，并且将四元数数据赋值即可。 123456789101112ros::Publisher IMU_pub = n.advertise&lt;sensor_msgs::Imu&gt;("imu_data", 20); sensor_msgs::Imu imu_data;imu_data.header.stamp = ros::Time::now();imu_data.header.frame_id = "base_link";imu_data.orientation.x = Q2;imu_data.orientation.y = -Q1;imu_data.orientation.z = -Q0;imu_data.orientation.w = Q3;imu_pub.publish(imu_data); 这样就成功的发布了imu话题。然后利用imu_tools（下载地址）中的rviz_imu_plugin方法测试imu数据。测试结果如下图：]]></content>
+      <categories>
+        <category>ROS</category>
+      </categories>
+      <tags>
+        <tag>ros</tag>
+        <tag>imu</tag>
+        <tag>JY901</tag>
+        <tag>MPU9250</tag>
+        <tag>串口解析</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Python notes]]></title>
     <url>%2F2018%2F04%2F16%2Fpython-notes%2F</url>
     <content type="text"><![CDATA[记录学习Python的一些常用语法，此记。 定义函数123456def power(x,n=2): s = 1 while n&gt;0: n = n -1 s = s * x return s 12345def add_end(L=None): if L is None: L = [] L.append('END') return L]]></content>
