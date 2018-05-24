@@ -92,7 +92,7 @@
 <meta property="og:image" content="http://yoursite.com/2018/05/24/ROS下IMU数据解析并发布/SSCOM3.2.jpg">
 <meta property="og:image" content="http://yoursite.com/2018/05/24/ROS下IMU数据解析并发布/四元数数据格式.jpg">
 <meta property="og:image" content="http://yoursite.com/2018/05/24/ROS下IMU数据解析并发布/数据格式说明.jpg">
-<meta property="og:updated_time" content="2018-05-24T08:00:02.292Z">
+<meta property="og:updated_time" content="2018-05-24T08:27:31.939Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ROS下IMU数据解析并发布-JY901（MPU9250）">
 <meta name="twitter:description" content="进行ROS下机器人系统开发，需要用到IMU数据，所以需要做IMU数据解析，IMU设备是JY901（内置MPU9250）芯片，设备利用USB转TTL转换，采用了MZ-RS24T转换器，转换芯片为FT232RL，本文想要系统记录从IMU传出数据到数据转换，再到ROS下数据解析并发布IMU话题的过程及（部分）实现方法，此记。">
@@ -420,7 +420,7 @@
 <h3 id="windows下测试设备"><a href="#windows下测试设备" class="headerlink" title="windows下测试设备"></a>windows下测试设备</h3><p>刚拿到设备需要确认设备是否可用，所以考虑在windows系统下测试，设备应该附带在windows的测试软件（miniIMUV4.3.11）和串口调试软件（SSCOM32），这些可以在他们的官方论坛<a href="http://elecmaster.net/forum.php?mod=viewthread&amp;tid=813&amp;extra=page%3D1" target="_blank" rel="noopener">维特智能</a>上下载到，也可以直接到百度网盘下载，<a href="https://pan.baidu.com/s/1J_3L_gTTH_d7ouZNegNdsw" target="_blank" rel="noopener">下载链接</a>。windows下的驱动程序可以自动搜索安装就不多说了。</p>
 <p>一些具体的测试方法在下载资料的使用说明中有具体的介绍，安装完驱动，确定能识别硬件，验证方法到我的电脑–管理–设备管理器–端口，一般显示为USB Serial Port(COM#)，然后打开miniIMUV4.3.11，可以正常显示在配置中选定的数据，说明硬件正常。<br><img src="/2018/05/24/ROS下IMU数据解析并发布/MiniIMU.jpg" width="526" height="322" title="图2 MiniIMU软件显示界面"></p>
 <h3 id="Linux下通信测试"><a href="#Linux下通信测试" class="headerlink" title="Linux下通信测试"></a>Linux下通信测试</h3><p>插入设备后，通过查看电脑的输入端口确定usb串口号，<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls /dev/tty*</span><br></pre></td></tr></table></figure></p>
-<p>查询到串口名为”/dev/ttyUSB0”，这样说明通信接口正常识别，后边会用的到。</p>
+<p>查询到串口名为”/dev/ttyUSB0”，这样说明通信接口正常识别，后边会用的到。<br>如果在后边中通信有问题可能是串口读取权限的问题，可以采用以下方式修改权限。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo chmod 666 /dev/ttyUSB0</span><br></pre></td></tr></table></figure></p>
 <h2 id="IMU数据解析"><a href="#IMU数据解析" class="headerlink" title="IMU数据解析"></a>IMU数据解析</h2><p>JY901模块是一款高精度的姿态测量模块，能够测量被测物体的姿态角度，以欧拉角或者四元素的方式输出。</p>
 <p>模块的数据采用16进制的方式进行传输（在使用说明书中也有说明），这种方式的优点是效率高，可以用很少的字节传输需要的数据，比如一个数据1.523，如果用16进制方式传送的话，2个字节就够了，而用ascii码的话，需要5个字节，在需要大量数据传输的时候就比较浪费有限的带宽了。而16进制数据的缺点呢，就是可读性不强，不像Ascii码那样，直接就能读出数据了。</p>
 <p>16进制数据传输的原理是这样的，先要确定数据的表示范围，然后是每个数据可用的字节数。比如角度的数据，每个角度的数据范围是±180度，而2个字节16进制数的表示范围是-32767-32768之间，那么我们就把±180的数据映射到±32768之间。假设原理的数据是x，变换以后的数据是y，那么y=x/180*32768。2个字节能表示的最小精度是1/32768*180=0.0055°，这对于角度的精度来说也够用了。<br>下面具体讲解析的方法。<br>在windows下先通过串口调试助手SSCOM3.2看模块的原始数据，打开相应的串口，注意要选择好正确的波特率，并且将模块的显示模式勾选为HEX显示。如图3 所示。<br><img src="/2018/05/24/ROS下IMU数据解析并发布/SSCOM3.2.jpg" width="532" height="426" title="图3 串口调试软件显示界面"></p>
