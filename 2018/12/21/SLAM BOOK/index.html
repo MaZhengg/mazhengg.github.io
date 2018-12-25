@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="python," />
+  <meta name="keywords" content="SLAM," />
 
 
 
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="记录学习Python的一些常用语法，此记。">
-<meta name="keywords" content="python">
+<meta name="description" content="本文主要记录视觉SLAM十四讲中的相关知识点。">
+<meta name="keywords" content="SLAM">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Python notes">
-<meta property="og:url" content="http://yoursite.com/2018/04/16/python-notes/index.html">
+<meta property="og:title" content="视觉SLAM十四讲中的知识">
+<meta property="og:url" content="http://yoursite.com/2018/12/21/SLAM BOOK/index.html">
 <meta property="og:site_name" content="M.Z&#39;s blog">
-<meta property="og:description" content="记录学习Python的一些常用语法，此记。">
+<meta property="og:description" content="本文主要记录视觉SLAM十四讲中的相关知识点。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-04-16T01:51:26.393Z">
+<meta property="og:updated_time" content="2018-12-25T08:17:27.800Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Python notes">
-<meta name="twitter:description" content="记录学习Python的一些常用语法，此记。">
+<meta name="twitter:title" content="视觉SLAM十四讲中的知识">
+<meta name="twitter:description" content="本文主要记录视觉SLAM十四讲中的相关知识点。">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/04/16/python-notes/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/12/21/SLAM BOOK/"/>
 
 
 
 
 
-  <title>Python notes | M.Z's blog</title>
+  <title>视觉SLAM十四讲中的知识 | M.Z's blog</title>
   
 
 
@@ -307,7 +307,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/16/python-notes/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/21/SLAM BOOK/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="M.Z">
@@ -324,7 +324,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Python notes</h1>
+          <h1 class="post-title" itemprop="name headline">视觉SLAM十四讲中的知识</h1>
         
 
         <div class="post-meta">
@@ -336,8 +336,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-16T10:39:04+08:00">
-                2018-04-16
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-21T11:39:04+08:00">
+                2018-12-21
               </time>
             
 
@@ -359,8 +359,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Python/" itemprop="url" rel="index">
-                    <span itemprop="name">Python</span>
+                  <a href="/categories/SLAM/" itemprop="url" rel="index">
+                    <span itemprop="name">SLAM</span>
                   </a>
                 </span>
 
@@ -378,8 +378,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/04/16/python-notes/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count hc-comment-count" data-xid="2018/04/16/python-notes/" itemprop="commentsCount"></span>
+                <a href="/2018/12/21/SLAM BOOK/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count hc-comment-count" data-xid="2018/12/21/SLAM BOOK/" itemprop="commentsCount"></span>
                 </a>
               </span>
               <!--/noindex-->
@@ -408,10 +408,34 @@
       
 
       
-        <p>记录学习Python的一些常用语法，此记。</p>
+        <p>本文主要记录视觉SLAM十四讲中的相关知识点。</p>
 <a id="more"></a>
-<h4 id="定义函数"><a href="#定义函数" class="headerlink" title="定义函数"></a>定义函数</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">power</span><span class="params">(x,n=<span class="number">2</span>)</span>:</span></span><br><span class="line">    s = <span class="number">1</span></span><br><span class="line">    <span class="keyword">while</span> n&gt;<span class="number">0</span>:</span><br><span class="line">        n = n <span class="number">-1</span></span><br><span class="line">        s = s * x</span><br><span class="line">    <span class="keyword">return</span> s</span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">add_end</span><span class="params">(L=None)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> L <span class="keyword">is</span> <span class="keyword">None</span>:</span><br><span class="line">        L = []</span><br><span class="line">    L.append(<span class="string">'END'</span>)</span><br><span class="line">    <span class="keyword">return</span> L</span><br></pre></td></tr></table></figure>
+<h1 id="C-知识点"><a href="#C-知识点" class="headerlink" title="C++知识点"></a>C++知识点</h1><h2 id="智能指针"><a href="#智能指针" class="headerlink" title="智能指针"></a>智能指针</h2><p>　几乎每一个有分量的程序都需要“在相同时间的多处地点处理或使用对象”的能力。为此，我们必须在程序的多个地点指向（refer to）同一对象。虽然C++语言提供引用（reference）和指针（pointer），还是不够，因为我们往往必须确保当“指向对象”的最末一个引用被删除时该对象本身也被删除，毕竟对象被删除时析构函数可以要求某些操作，例如释放内存或归还资源等等。</p>
+<p>　　所以我们需要“当对象再也不被使用时就被清理”的语义。Class shared_ptr提供了这样的共享式拥有语义。也就是说，多个shared_ptr可以共享（或说拥有）同一对象。对象的最末一个拥有者有责任销毁对象，并清理与该对象相关的所有资源。</p>
+<p>　　shared_ptr的目标就是，在其所指向的对象不再被使用之后（而非之前），自动释放与对象相关的资源。</p>
+<h2 id="使用Mat-ptr模板函数"><a href="#使用Mat-ptr模板函数" class="headerlink" title="使用Mat::ptr模板函数"></a>使用Mat::ptr模板函数</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ushort d = depth_.ptr&lt;ushort&gt;(y)[x];</span><br><span class="line"><span class="comment">//这个还是.ptr模板函数定位像素值的方法，记住用法</span></span><br><span class="line"><span class="comment">//返回的是depth_的第y行数据的第x个的深度值</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;    </span><br><span class="line">    Mat m(400, 400, CV_8UC3, Scalar(226, 46, 166));</span><br><span class="line">    imshow(<span class="string">"Before"</span>, m);</span><br><span class="line">   </span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> row = <span class="number">0</span>; row &lt; m.rows; row++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (row % <span class="number">5</span> == <span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">// data 是 uchar* 类型的, m.ptr&lt;uchar&gt;(row) 返回第 row 行数据的首地址</span></span><br><span class="line">            <span class="comment">// 需要注意的是该行数据是按顺序存放的,也就是对于一个 3 通道的 Mat, 一个像素有</span></span><br><span class="line">            <span class="comment">// 有 3 个通道值, [B,G,R][B,G,R][B,G,R]... 所以一行长度为:</span></span><br><span class="line">            <span class="comment">// sizeof(uchar) * m.cols * m.channels() 个字节</span></span><br><span class="line">            uchar* data = m.ptr&lt;uchar&gt;(row);</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> col = <span class="number">0</span>; col &lt; m.cols; col++)</span><br><span class="line">            &#123;</span><br><span class="line">                data[col * <span class="number">3</span>] = <span class="number">102</span>; <span class="comment">//第row行的第col个像素点的第一个通道值 Blue</span></span><br><span class="line">                data[col * <span class="number">3</span> + <span class="number">1</span>] = <span class="number">217</span>; <span class="comment">// Green</span></span><br><span class="line">                data[col * <span class="number">3</span> + <span class="number">2</span>] = <span class="number">239</span>; <span class="comment">// Red</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    imshow(<span class="string">"After"</span>, m);     </span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; (<span class="keyword">int</span>)m.at&lt;Vec3b&gt;(<span class="number">0</span>, <span class="number">0</span>)[<span class="number">0</span>] &lt;&lt; <span class="string">','</span>; <span class="comment">//利用 Fn 1 介绍的方法输出一下像素值到控制台</span></span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; (<span class="keyword">int</span>)m.at&lt;Vec3b&gt;(<span class="number">0</span>, <span class="number">0</span>)[<span class="number">1</span>] &lt;&lt; <span class="string">','</span>;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; (<span class="keyword">int</span>)m.at&lt;Vec3b&gt;(<span class="number">0</span>, <span class="number">0</span>)[<span class="number">2</span>] &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line"> </span><br><span class="line">    cvWaitKey();</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="单件模式（Singleton）"><a href="#单件模式（Singleton）" class="headerlink" title="单件模式（Singleton）"></a>单件模式（Singleton）</h2><p>定义：单件模式确保一个类只有一个实例，并提供一个全局访问点。<br>把Config写成单件模式（Singleton），它只有一个全局对象，当我们设置参数文件时，创建该对象并读取参数，随后就可以在任意地方访问参数值，最后在程序结束时自动销毁。</p>
+<h2 id="std-min-element和std-max-element"><a href="#std-min-element和std-max-element" class="headerlink" title="std::min_element和std::max_element"></a>std::min_element和std::max_element</h2><p>Returns an iterator pointing to the element with the smallest（largest） value in the range [first,last).<br>这就是书中使用了std::min_element和lambda表达式的程序，这段程序具体实现的功能是找到matches这个用来存放匹配的关键点的描述子中描述子的最小的距离，然后赋值给min_dis，matches是存放Dmatch这个描述子类的容器，所有最后会有-&gt;distance表示赋给min_dis的是距离。</p>
+<p>返回容器或者数组中最大值和最小值。max/min_element(first,end,cmp);其中cmp为可选择参数</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[] ( <span class="keyword">const</span> cv::DMatch&amp; m1, <span class="keyword">const</span> cv::DMatch&amp; m2 ) </span><br><span class="line">&#123; </span><br><span class="line">    <span class="keyword">return</span> m1.distance &lt; m2.distance; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这里的lamda函数相当于:<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">cmp</span><span class="params">(<span class="keyword">const</span> cv::DMatch&amp; m1, <span class="keyword">const</span> cv::DMatch&amp; m2)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> m1.distance &lt; m2.distance; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>实际的功能就是将matches中的所有描述子进行了个排序，然后min_element取了第一个及最小的那个的distance赋给了min_dis</p>
+<h2 id="c-11特性：auto关键字"><a href="#c-11特性：auto关键字" class="headerlink" title="c++ 11特性：auto关键字"></a>c++ 11特性：auto关键字</h2><p>auto可以在声明变量的时候根据变量初始值的类型自动为此变量选择匹配的类型，类似的关键字还有decltype。举个例子：<br>用于代替冗长复杂、变量使用范围专一的变量声明。</p>
+<p>想象一下在没有auto的时候，我们操作标准库时经常需要这样：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="built_in">std</span>::<span class="built_in">string</span>&gt; vs;</span><br><span class="line">    <span class="keyword">for</span> (<span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="built_in">std</span>::<span class="built_in">string</span>&gt;::iterator i = vs.begin(); i != vs.end(); i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">//...</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>这样看代码写代码实在烦得很。有人可能会说为何不直接使用using namespace std，这样代码可以短一点。实际上这不是该建议的方法（C++Primer对此有相关叙述）。使用auto能简化代码：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="built_in">std</span>::<span class="built_in">string</span>&gt; vs;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">auto</span> i = vs.begin(); i != vs.end(); i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">//..</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>for循环中的i将在编译时自动推导其类型，而不用我们显式去定义那长长的一串。<br>在定义模板函数时，用于声明依赖模板参数的变量类型。<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> _Tx,<span class="keyword">typename</span> _Ty&gt;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Multiply</span><span class="params">(_Tx x, _Ty y)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">auto</span> v = x*y;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; v;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>若不使用auto变量来声明v，那这个函数就难定义啦，不到编译的时候，谁知道x*y的真正类型是什么呢？<br>模板函数依赖于模板参数的返回值<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> _Tx, <span class="keyword">typename</span> _Ty&gt;</span><br><span class="line">auto multiply(_Tx x, _Ty y)-&gt;decltype(_Tx*_Ty)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">return</span> x*y;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>当模板函数的返回值依赖于模板的参数时，我们依旧无法在编译代码前确定模板参数的类型，故也无从知道返回值的类型，这时我们可以使用auto。格式如上所示。</p>
+<h1 id="图像知识"><a href="#图像知识" class="headerlink" title="图像知识"></a>图像知识</h1><h2 id="OpenCV函数"><a href="#OpenCV函数" class="headerlink" title="OpenCV函数"></a>OpenCV函数</h2><p>函数cvRound，cvFloor，cvCeil 都是用一种舍入的方法将输入浮点数转换成整数：</p>
+<p><em>cvRound:返回跟参数最接近的整数值；
+</em>cvFloor:返回不大于参数的最大整数值；<br>*cvCeil:返回不小于参数的最小整数值。</p>
+<h2 id="opencv软件"><a href="#opencv软件" class="headerlink" title="opencv软件"></a>opencv软件</h2><p>opencv2和opencv3共存<br>opencv2默认安装，安装路径一般是“usr/local”，在安装opencv3时，先下载3的源码，解压后<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir build</span><br><span class="line"><span class="built_in">cd</span> build</span><br></pre></td></tr></table></figure></p>
+<p>更改安装目录（先在/usr/local下新建文件夹opencv3），<br><code></code> bash<br>cmake -D CMAKE_BUILD_TYPE=Release -D CMAKE_INSTALL_PREFIX=/usr/local/opencv3 ..<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">然后编译opencv3即可，</span><br><span class="line">``` bash</span><br><span class="line">make</span><br><span class="line">sudo make install</span><br></pre></td></tr></table></figure></p>
+<p> 这样就把3安装在opencv3文件夹了(bin lib share include)</p>
+<p> build过程中可能报错， ICV: Failed to download ICV package: ippicv_linux_20151201.tgz.<br>  Status=7;”Couldn’t connect to server”，解决方法是手动下载ippicv_linux_20151201.tgz，并替换掉opencv-3.1.0/3rdparty/ippicv/downloads/linux-*下的相应文件即可，可以直接从该地址下载：[ippicv_linux_20151201.tgz]:<a href="https://raw.githubusercontent.com/Itseez/opencv_3rdparty/81a676001ca8075ada498583e4166079e5744668/ippicv/ippicv_linux_20151201.tgz" target="_blank" rel="noopener">https://raw.githubusercontent.com/Itseez/opencv_3rdparty/81a676001ca8075ada498583e4166079e5744668/ippicv/ippicv_linux_20151201.tgz</a></p>
+<p>在使用的时候，在CMakelists.txt中，如要用3，在find_package前指明路径：<br><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">set</span>(OpenCV_DIR /usr/local/opencv3/share/OpenCV)</span><br><span class="line"><span class="keyword">find_package</span>(OpenCV <span class="number">3</span> REQUIRED)</span><br></pre></td></tr></table></figure></p>
+<h2 id="ORB特征构造函数"><a href="#ORB特征构造函数" class="headerlink" title="ORB特征构造函数"></a>ORB特征构造函数</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> Ptr&lt;ORB&gt; cv::ORB::create ( <span class="keyword">int</span> nfeatures = <span class="number">500</span>, 								     		 </span><br><span class="line">                         <span class="keyword">float</span> scaleFactor = <span class="number">1.2f</span>, </span><br><span class="line">					 	 <span class="keyword">int</span> nlevels = <span class="number">8</span>, </span><br><span class="line">					 	 <span class="keyword">int</span> edgeThreshold = <span class="number">31</span>, </span><br><span class="line">					 	 <span class="keyword">int</span> firstLevel = <span class="number">0</span>, </span><br><span class="line">					 	 <span class="keyword">int</span> WTA_K = <span class="number">2</span>, </span><br><span class="line">					 	 <span class="keyword">int</span> scoreType = ORB::HARRIS_SCORE, </span><br><span class="line">					 	 <span class="keyword">int</span> patchSize = <span class="number">31</span>, </span><br><span class="line">					 	 <span class="keyword">int</span> fastThreshold = <span class="number">20</span> ) </span><br><span class="line">nfeatures:需要的特征点总数；</span><br><span class="line">scaleFactor:尺度因子；</span><br><span class="line">nlevels:金字塔层数；</span><br><span class="line">edgeThreshold:边界阈值；</span><br><span class="line">firstLevel:起始层；</span><br><span class="line"> WTA_K：描述子形成方法,WTA_K=<span class="number">2</span>表示，采用两两比较；</span><br><span class="line"> scoreType:角点响应函数，可以选择Harris或者Fast的方法；</span><br><span class="line"> patchSize:特征点邻域大小；</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -457,7 +481,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/python/" rel="tag"># python</a>
+            <a href="/tags/SLAM/" rel="tag"># SLAM</a>
           
         </div>
       
@@ -470,8 +494,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/04/09/ROS-nodelet-介绍/" rel="next" title="ROS nodelet 介绍">
-                <i class="fa fa-chevron-left"></i> ROS nodelet 介绍
+              <a href="/2018/12/21/C++谷歌命名法/" rel="next" title="C++谷歌命名法">
+                <i class="fa fa-chevron-left"></i> C++谷歌命名法
               </a>
             
           </div>
@@ -479,10 +503,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/05/24/ROS下IMU数据解析并发布/" rel="prev" title="ROS下IMU数据解析并发布-JY901（MPU9250）">
-                ROS下IMU数据解析并发布-JY901（MPU9250） <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -669,7 +689,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#定义函数"><span class="nav-number">1.</span> <span class="nav-text">定义函数</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#C-知识点"><span class="nav-number">1.</span> <span class="nav-text">C++知识点</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#智能指针"><span class="nav-number">1.1.</span> <span class="nav-text">智能指针</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用Mat-ptr模板函数"><span class="nav-number">1.2.</span> <span class="nav-text">使用Mat::ptr模板函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#单件模式（Singleton）"><span class="nav-number">1.3.</span> <span class="nav-text">单件模式（Singleton）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#std-min-element和std-max-element"><span class="nav-number">1.4.</span> <span class="nav-text">std::min_element和std::max_element</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#c-11特性：auto关键字"><span class="nav-number">1.5.</span> <span class="nav-text">c++ 11特性：auto关键字</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#图像知识"><span class="nav-number">2.</span> <span class="nav-text">图像知识</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#OpenCV函数"><span class="nav-number">2.1.</span> <span class="nav-text">OpenCV函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#opencv软件"><span class="nav-number">2.2.</span> <span class="nav-text">opencv软件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ORB特征构造函数"><span class="nav-number">2.3.</span> <span class="nav-text">ORB特征构造函数</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -836,7 +856,7 @@
 		_hcwp.push({widget:"Bloggerstream", widget_id: 103194, selector:".hc-comment-count", label: "{\%COUNT%\}" });
 
 		
-		_hcwp.push({widget:"Stream", widget_id: 103194, xid: "2018/04/16/python-notes/"});
+		_hcwp.push({widget:"Stream", widget_id: 103194, xid: "2018/12/21/SLAM BOOK/"});
 		
 
 		(function() {
