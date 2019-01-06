@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="M.Z&#39;s blog">
 <meta property="og:description" content="本文主要记录卡尔曼滤波的推导过程，此记。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-01-06T03:40:48.356Z">
+<meta property="og:updated_time" content="2019-01-06T03:45:09.394Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="卡尔曼滤波推导">
 <meta name="twitter:description" content="本文主要记录卡尔曼滤波的推导过程，此记。">
@@ -359,8 +359,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/math-SLAM/" itemprop="url" rel="index">
-                    <span itemprop="name">math, SLAM</span>
+                  <a href="/categories/math/" itemprop="url" rel="index">
+                    <span itemprop="name">math</span>
                   </a>
                 </span>
 
@@ -418,11 +418,11 @@
 <p> 假设$W_k,V_k$为相互独立，正态分布的白色噪声，过程激励噪声协方差矩阵为$Q$，观测噪声协方差矩阵为$R$，即：<br> $$W_k\sim N(0,Q)\tag{3}$$<br> $$V_k\sim N(0,R)\tag{4}$$</p>
 <p> $A,B,H$我们统称为状态变换矩阵，是状态变换过程中的调整系数，是从建立的系统数学模型中导出来的，这儿我们假设它们是常数。</p>
 <h1 id="滤波器计算原型"><a href="#滤波器计算原型" class="headerlink" title="滤波器计算原型"></a>滤波器计算原型</h1><p> 从建立的系统数学模型出发，可以导出卡尔曼滤波的计算原型，包括：时间更新方程和测量更新方程。 为了便于描述，做以下说明：(1)$\hat{x}_k\in R^n$，第$k$步之前的状态已知的情况下第$k$步的先验状态估计值（$\bar{}$代表先验,$\hat{}$代表估计）；(2)$\hat{X}_k\in R^n$ ，测量变量$Z_k$已知情况下第$k$步的后验状态估计值。由此定义先验估计误差和后验估计误差：</p>
-<p> $$E_k^{-}=X_k-\hat{X}_k^{-}\tag{5}$$<br> $$E_k=X_k-\hat{X}_k\tag{6}$$</p>
+<p> $$E_k^{-}=X_k-\hat{X}_k^{-}\tag{5}$$<br> $$E_k=X_k-\hat{X}_k\tag{6}\label{pos_estim_error}$$</p>
 <p> 先验估计误差的协方差矩阵为：<br> $P_k^{-}=E(E_k^{-}E_k^{-T})\tag{7}$</p>
-<p> 后验估计误差的协方差矩阵为：<br> $P_k=E(E_kE_k^{T})\tag{8}\label{pos_estim}$</p>
-<p> 先验估计$\hat{X}_k^{-}$和加权的测量变量$Z_k$及其预测$H\hat{X}_k^{-}$之差的线性组合构成了后验状态估计$\hat{X}_k$：<br> $$\hat{X}_k=\hat{X}_k^{-}+K(Z_k-\hat{X}_k^{-})\tag{9}$$</p>
-<p> 式中测量变量及其预测值之差$(Z_k-\hat{X}_k^{-})$ 反映了预测值和实际值之间的不一致程度，称为测量过程的残余。$n\times m$阶矩阵$K$叫做残余的增益 ，作用是使\eqref{pos_estim}式中的后验估计误差协方差最小。 可以通过以下步骤求出 K：将（9）式代入（6）式代入（8）式，将 Pk 对 K 求导，使一阶导数为零，可以求出 $K$，$K$的一种形式为：<br> $$$$</p>
+<p> 后验估计误差的协方差矩阵为：<br> $P_k=E(E_kE_k^{T})\tag{8}\label{pos_estim_error_conv}$</p>
+<p> 先验估计$\hat{X}_k^{-}$和加权的测量变量$Z_k$及其预测$H\hat{X}_k^{-}$之差的线性组合构成了后验状态估计$\hat{X}_k$：<br> $$\hat{X}_k=\hat{X}_k^{-}+K(Z_k-\hat{X}_k^{-})\tag{9}\label{pos_estim}$$</p>
+<p> 式中测量变量及其预测值之差$(Z_k-\hat{X}_k^{-})$ 反映了预测值和实际值之间的不一致程度，称为测量过程的残余。$n\times m$阶矩阵$K$叫做残余的增益 ，作用是使\eqref{pos_estim_error_conv}式中的后验估计误差协方差最小。 可以通过以下步骤求出 K：将\eqref{pos_estim}式代入\eqref{pos_estim_error}式代入\eqref{pos_estim_error_conv}式，将$Pk$对$K$求导，使一阶导数为零，可以求出 $K$，$K$的一种形式为：<br> $$$$</p>
 
       
     </div>
