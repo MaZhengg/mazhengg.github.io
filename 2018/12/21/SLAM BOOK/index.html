@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="本文主要记录视觉SLAM十四讲中的相关知识点。">
+<meta name="description" content="本文主要记录视觉SLAM十四讲中的相关知识点，此记。">
 <meta name="keywords" content="SLAM">
 <meta property="og:type" content="article">
 <meta property="og:title" content="视觉SLAM十四讲中的知识">
 <meta property="og:url" content="http://yoursite.com/2018/12/21/SLAM BOOK/index.html">
 <meta property="og:site_name" content="M.Z&#39;s blog">
-<meta property="og:description" content="本文主要记录视觉SLAM十四讲中的相关知识点。">
+<meta property="og:description" content="本文主要记录视觉SLAM十四讲中的相关知识点，此记。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-12-27T06:03:13.695Z">
+<meta property="og:updated_time" content="2019-01-06T11:46:44.437Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="视觉SLAM十四讲中的知识">
-<meta name="twitter:description" content="本文主要记录视觉SLAM十四讲中的相关知识点。">
+<meta name="twitter:description" content="本文主要记录视觉SLAM十四讲中的相关知识点，此记。">
 
 
 
@@ -408,7 +408,7 @@
       
 
       
-        <p>本文主要记录视觉SLAM十四讲中的相关知识点。</p>
+        <p>本文主要记录视觉SLAM十四讲中的相关知识点，此记。</p>
 <a id="more"></a>
 <h1 id="C-知识点"><a href="#C-知识点" class="headerlink" title="C++知识点"></a>C++知识点</h1><h2 id="智能指针"><a href="#智能指针" class="headerlink" title="智能指针"></a>智能指针</h2><p>　几乎每一个有分量的程序都需要“在相同时间的多处地点处理或使用对象”的能力。为此，我们必须在程序的多个地点指向（refer to）同一对象。虽然C++语言提供引用（reference）和指针（pointer），还是不够，因为我们往往必须确保当“指向对象”的最末一个引用被删除时该对象本身也被删除，毕竟对象被删除时析构函数可以要求某些操作，例如释放内存或归还资源等等。</p>
 <p>　　所以我们需要“当对象再也不被使用时就被清理”的语义。Class shared_ptr提供了这样的共享式拥有语义。也就是说，多个shared_ptr可以共享（或说拥有）同一对象。对象的最末一个拥有者有责任销毁对象，并清理与该对象相关的所有资源。</p>
