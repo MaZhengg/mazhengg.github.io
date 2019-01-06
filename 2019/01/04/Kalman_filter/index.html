@@ -83,17 +83,14 @@
 <meta name="keywords" content="Kalman Filter">
 <meta property="og:type" content="article">
 <meta property="og:title" content="卡尔曼滤波推导">
-<meta property="og:url" content="http://yoursite.com/2019/01/04/Kalman filter/index.html">
+<meta property="og:url" content="http://yoursite.com/2019/01/04/Kalman_filter/index.html">
 <meta property="og:site_name" content="M.Z&#39;s blog">
 <meta property="og:description" content="本文主要记录卡尔曼滤波的推导过程，此记。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/2019/01/04/Kalman%20filter/kalman_filter/循环更新图.jpg">
-<meta property="og:image" content="http://yoursite.com/2019/01/04/Kalman%20filter/kalman_filter/卡尔曼滤波器工作原理图.jpg">
-<meta property="og:updated_time" content="2019-01-06T11:56:21.796Z">
+<meta property="og:updated_time" content="2019-01-06T12:17:51.132Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="卡尔曼滤波推导">
 <meta name="twitter:description" content="本文主要记录卡尔曼滤波的推导过程，此记。">
-<meta name="twitter:image" content="http://yoursite.com/2019/01/04/Kalman%20filter/kalman_filter/循环更新图.jpg">
 
 
 
@@ -123,7 +120,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/01/04/Kalman filter/"/>
+  <link rel="canonical" href="http://yoursite.com/2019/01/04/Kalman_filter/"/>
 
 
 
@@ -310,7 +307,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/04/Kalman filter/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/04/Kalman_filter/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="M.Z">
@@ -381,8 +378,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/01/04/Kalman filter/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count hc-comment-count" data-xid="2019/01/04/Kalman filter/" itemprop="commentsCount"></span>
+                <a href="/2019/01/04/Kalman_filter/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count hc-comment-count" data-xid="2019/01/04/Kalman_filter/" itemprop="commentsCount"></span>
                 </a>
               </span>
               <!--/noindex-->
@@ -426,11 +423,10 @@
 <p> 后验估计误差的协方差矩阵为：<br> $$P_k=E(e_ke_k^{T})\tag{8}\label{pos_estim_error_conv}$$</p>
 <p> 先验估计$\hat{X}_k^{-}$和加权的测量变量$Z_k$及其预测$H\hat{X}_k^{-}$之差的线性组合构成了后验状态估计$\hat{X}_k$：<br> $$\hat{x}_k=\hat{x}_k^{-}+K(z_k-\hat{x}_k^{-})\tag{9}\label{pos_estim}$$</p>
 <p> 式中测量变量及其预测值之差$(z_k-\hat{X}_k^{-})$ 反映了预测值和实际值之间的不一致程度，称为测量过程的残余。残余为零表明二者完全吻合。$n\times m$阶矩阵$K$叫做残余的增益 ，作用是使\eqref{pos_estim_error_conv}式中的后验估计误差协方差最小。 可以通过以下步骤求出 K：将\eqref{pos_estim}式代入\eqref{pos_estim_error}式代入\eqref{pos_estim_error_conv}式，将$P_k$对$K$求导，使一阶导数为零，可以求出 $K$，$K$的一种形式为：<br> $$K_k = P_k^{-}H^T(HP_k^{-}H^T+R)^{-1}\tag{10}\label{kalman_k}$$</p>
-<p>卡尔曼滤波器用反馈控制的方法估计过程状态： 滤波器估计过程某一时刻的状态， 然后以（含噪声的） 测量变量的方式获得反馈。 因此卡尔曼滤波器可分为两个部分： 时间更新方程和测量更新方程。 时间更新方程负责及时向前推算当前状态变量和误差协方差估计的值， 以便为下一个时间状态构造先验估计。 测量更新方程负责反馈――也就是说， 它将先验估计和新的测量变量结合以构造改进的后验估计。时间更新方程也可视为预估方程， 测量更新方程可视为校正方程。 最后的估计算法成为一种具有数值解的预估－校正算法， 如下图所示。<br><img src="/2019/01/04/Kalman filter/kalman_filter/循环更新图.jpg" width="400" height="268" title="离散卡尔曼滤波器循环更新图"></p>
-<p>离散卡尔曼滤波器时间更新方程：<br> $$\bar{x}<em>k^{-}=A\bar{x}</em>{k-1}+Bu_{k-1}\tag{11}$$<br> $$P_k^{-}=AP_{k-1}A^T + Q\tag{12}$$</p>
-<p> 离散卡尔曼滤波器状态更新方程：<br> $$K_k = P_k^{-}H^T(HP_k^{-}H^T+R)^{-1}\tag{13}\label{kalman_gain}$$<br> $$\bar{x}_k=\bar{x}_k^{-}K_k(z_k - H\hat{x}_k^{-})\tag{14}\label{pos_estim2}$$<br> $$P_k = (I-K_kH)P_k^{-}\tag{15}\label{pos_cov}$$</p>
+<p>卡尔曼滤波器用反馈控制的方法估计过程状态： 滤波器估计过程某一时刻的状态， 然后以（含噪声的） 测量变量的方式获得反馈。 因此卡尔曼滤波器可分为两个部分： 时间更新方程和测量更新方程。 时间更新方程负责及时向前推算当前状态变量和误差协方差估计的值， 以便为下一个时间状态构造先验估计。 测量更新方程负责反馈――也就是说， 它将先验估计和新的测量变量结合以构造改进的后验估计。时间更新方程也可视为预估方程， 测量更新方程可视为校正方程。 最后的估计算法成为一种具有数值解的预估－校正算法， 如下图所示。<br>$$\hat{x}<em>k^{-} = A\hat{x}</em>{k-1}+Bu_{k-1}$$<br>离散卡尔曼滤波器时间更新方程:<br>$$x_k=Ax_{k-1}+Bu_{k-1}+w_{k-1}\tag{11}$$<br>$$P_k^{-} = AP_{k-1}A^T + Q\tag{12}$$</p>
+<p>离散卡尔曼滤波器状态更新方程：<br>$$K_k = P_k^{-}H^T(HP_k^{-}H^T+R)^{-1}\tag{13}\label{kalman_gain}$$<br>$$\hat{x}_k=\hat{x}_k^{-}K_k(z_k - H\hat{x}_k^{-})\tag{14}\label{pos_estim2}$$<br>$$P_k = (I-K_kH)P_k^{-}\tag{15}\label{pos_cov}$$</p>
 <p>测量更新方程首先做的是计算卡尔曼增益 $K_k$ 。 注意\eqref{kalman_gain}式和\eqref{kalman_k}式是相同的。 其次便测量输出以获得$z_k$， 然后按\eqref{pos_estim2}式（与\eqref{pos_estim}式相同） 产生状态的后验估计。 最后按\eqref{pos_cov}式估计状态的后验协方差。</p>
-<p>最后，滤波器的整个操作流程如下图所示：<br><img src="/2019/01/04/Kalman filter/kalman_filter/卡尔曼滤波器工作原理图.jpg" width="400" height="268" title="卡尔曼滤波器工作原理图"></p>
+<p>最后，滤波器的整个操作流程如下图所示：</p>
 
       
     </div>
@@ -852,7 +848,7 @@
 		_hcwp.push({widget:"Bloggerstream", widget_id: 103194, selector:".hc-comment-count", label: "{\%COUNT%\}" });
 
 		
-		_hcwp.push({widget:"Stream", widget_id: 103194, xid: "2019/01/04/Kalman filter/"});
+		_hcwp.push({widget:"Stream", widget_id: 103194, xid: "2019/01/04/Kalman_filter/"});
 		
 
 		(function() {
