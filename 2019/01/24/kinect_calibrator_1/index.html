@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="M.Z&#39;s blog">
 <meta property="og:description" content="本文主要记录kinect相关的知识和对齐方法，这是第二部分，此记。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-01-24T02:11:32.424Z">
+<meta property="og:updated_time" content="2019-01-25T02:50:07.710Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="kinect彩色图和深度图对齐(二)">
 <meta name="twitter:description" content="本文主要记录kinect相关的知识和对齐方法，这是第二部分，此记。">
@@ -462,7 +462,7 @@
 <h3 id="位深度转换原理"><a href="#位深度转换原理" class="headerlink" title="位深度转换原理"></a>位深度转换原理</h3><p>如上，给出图像的位深度及其取值范围后，我们不难理解，要转换位深度本质上就是对原深度下的数据做线性变换，使原位深度下的最小值和最大值分别对应转换后位深度下的最小值和最大值。实现上述线性变换，我们可以用opencv库函数cvConvertScale。</p>
 <h3 id="图像的通道"><a href="#图像的通道" class="headerlink" title="图像的通道"></a>图像的通道</h3><p>比较通俗易懂的解释是：灰度图的通道数为1，彩色图的通道为3。基本上，描述一个像素点，如果是灰度，那么只需要一个数值来描述它，就是单通道。如果一个像素点，有RGB三种颜色来描述它，就是三通道。</p>
 <h1 id="Kinect彩色图和深度图对准"><a href="#Kinect彩色图和深度图对准" class="headerlink" title="Kinect彩色图和深度图对准"></a>Kinect彩色图和深度图对准</h1><h2 id="MATLAB对准方法"><a href="#MATLAB对准方法" class="headerlink" title="MATLAB对准方法"></a>MATLAB对准方法</h2><p>将得到的彩色图像和红外图像分为两组，然后利用MATLAB的stereoCameraCalibrator工具箱，输入两组图像，然后点击calibrate即可得到两个相机的坐标变换旋转矩阵$R$和平移矩阵$T$，MATLAB得到的矩阵$\hat{R}$需要转置后才是旋转矩阵$R$.<a href="https://ww2.mathworks.cn/help/vision/ug/stereo-camera-calibrator-app.html" target="_blank" rel="noopener">stereoCameraCalibrator工具箱链接</a></p>
-<h1 id="Kinect彩色图和深度图对准理论方法"><a href="#Kinect彩色图和深度图对准理论方法" class="headerlink" title="Kinect彩色图和深度图对准理论方法"></a>Kinect彩色图和深度图对准理论方法</h1><p>kinect RGB的内参:<br>\begin{equation}<br>K_{rgb} =\left[\begin{array}{ccc}<br>f_{x_rgb} &amp; 0 &amp; c_{x_rgb}\<br>0 &amp; f_{y_rgb} &amp; c_{y_rgb}\<br>0 &amp; 0 &amp; 1<br>\end{array}\right] =\left[\begin{array}{ccc}<br>522.955354 &amp; 0.000000   &amp; 327.140468\<br>0.000000   &amp; 523.763483 &amp; 218.630165\<br>0.000000   &amp; 0.000000   &amp; 1.000000<br>\end{array}\right]<br>\end{equation}<br>因此，对于各自相机坐标系下的齐次的三维点($P=[X,Y,Z,1]^T$)到各自图片上齐次表示的像素坐标($p=[u,v,1]^T$)的映射关系如下：</p>
+<h1 id="Kinect彩色图和深度图对准理论方法"><a href="#Kinect彩色图和深度图对准理论方法" class="headerlink" title="Kinect彩色图和深度图对准理论方法"></a>Kinect彩色图和深度图对准理论方法</h1><p>kinect RGB的内参:<br>$$K_{rgb} =\left[\begin{array}{ccc}<br>f_{x_rgb} &amp; 0 &amp; c_{x_rgb}\<br>0 &amp; f_{y_rgb} &amp; c_{y_rgb}\<br>0 &amp; 0 &amp; 1<br>\end{array}\right] =\left[\begin{array}{ccc}<br>522.955354 &amp; 0.000000   &amp; 327.140468\<br>0.000000   &amp; 523.763483 &amp; 218.630165\<br>0.000000   &amp; 0.000000   &amp; 1.000000<br>\end{array}\right]<br>$$<br>因此，对于各自相机坐标系下的齐次的三维点($P=[X,Y,Z,1]^T$)到各自图片上齐次表示的像素坐标($p=[u,v,1]^T$)的映射关系如下：</p>
 <p>对彩色相机而言，有：<br>\begin{equation}<br>Z_{rgb}<em>p_{rgb} = K_{rgb}</em>[I|0]P_{rgb}<br>\end{equation}</p>
 <p>展开如下，<br>\begin{equation}<br>\begin{aligned}<br>Z_{rgb}<em>\left[\begin{array}{c}<br>u_{rgb}\v_{rgb}\1<br>\end{array}\right]&amp; = \left[<br>\begin{array}{c}<br>f_{x_rgb}</em>X_{rgb}+c_{x_rgb}<em>Z_{rgb}\f_{y_rgb}</em>Y_{rgb}+c_{y_rgb}<em>Z_{rgb}\Z_{rgb}<br>\end{array}\right] \&amp; =\left[<br>\begin{array}{cccc}<br>f_{x_rgb} &amp; 0 &amp; c_{x_rgb} &amp; 0\<br>0 &amp; f_{y_rgb} &amp; c_{y_rgb} &amp; 0\<br>0 &amp; 0 &amp; 1&amp; 0<br>\end{array}\right]</em>\left[<br>\begin{array}{c}<br>X_{rgb}\Y_{rgb}\Z_{rgb}\1<br>\end{array}\right]<br>\end{aligned}<br>\end{equation}</p>
 <p>其中，齐次坐标$P_{rgb} = [X_{rgb},Y_{rgb},Z_{rgb} 1]^T$我们可以用非齐次坐标$\bar{P_{rgb}}=[X_{rgb},Y_{rgb},Z_{rgb}]^T$来表示，应有如下的形式：<br>\begin{equation}<br>Z_{rgb}<em>p_{rgb} = K_{rgb}</em>\bar{P_{rgb}}<br>\end{equation}</p>
@@ -538,8 +538,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/01/24/kinect_calibrator_2/" rel="next" title="kinect彩色图和深度图对齐(三)：代码注释说明">
-                <i class="fa fa-chevron-left"></i> kinect彩色图和深度图对齐(三)：代码注释说明
+              <a href="/2019/01/23/kinect_calibrator/" rel="next" title="kinect彩色图和深度图对齐(一)">
+                <i class="fa fa-chevron-left"></i> kinect彩色图和深度图对齐(一)
               </a>
             
           </div>
@@ -547,6 +547,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/01/24/kinect_calibrator_2/" rel="prev" title="kinect彩色图和深度图对齐(三)：代码注释说明">
+                kinect彩色图和深度图对齐(三)：代码注释说明 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
