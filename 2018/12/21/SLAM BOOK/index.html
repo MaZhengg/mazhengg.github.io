@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="M.Z&#39;s blog">
 <meta property="og:description" content="本文主要记录视觉SLAM十四讲中的相关知识点，此记。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-01-06T12:50:08.291Z">
+<meta property="og:updated_time" content="2019-03-01T03:31:19.065Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="视觉SLAM十四讲中的知识">
 <meta name="twitter:description" content="本文主要记录视觉SLAM十四讲中的相关知识点，此记。">
@@ -431,7 +431,8 @@
 <p><em>cvRound:返回跟参数最接近的整数值；
 </em>cvFloor:返回不大于参数的最大整数值；<br>*cvCeil:返回不小于参数的最小整数值。</p>
 <h2 id="opencv软件"><a href="#opencv软件" class="headerlink" title="opencv软件"></a>opencv软件</h2><p>opencv2和opencv3共存<br>opencv2默认安装，安装路径一般是“usr/local”，在安装opencv3时，先下载3的源码，解压后<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir build</span><br><span class="line"><span class="built_in">cd</span> build</span><br></pre></td></tr></table></figure></p>
-<p>更改安装目录（先在/usr/local下新建文件夹opencv3），<br><code></code> bash<br>cmake -D CMAKE_BUILD_TYPE=Release -D CMAKE_INSTALL_PREFIX=/usr/local/opencv3 ..<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">然后编译opencv3即可，</span><br><span class="line">``` bash</span><br><span class="line">make</span><br><span class="line">sudo make install</span><br></pre></td></tr></table></figure></p>
+<p>更改安装目录（先在/usr/local下新建文件夹opencv3），<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cmake -D CMAKE_BUILD_TYPE=Release -D CMAKE_INSTALL_PREFIX=/usr/<span class="built_in">local</span>/opencv3 ..</span><br></pre></td></tr></table></figure></p>
+<p> 然后编译opencv3即可，<br> <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">make</span><br><span class="line">sudo make install</span><br></pre></td></tr></table></figure></p>
 <p> 这样就把3安装在opencv3文件夹了(bin lib share include)</p>
 <p> build过程中可能报错， ICV: Failed to download ICV package: ippicv_linux_20151201.tgz.<br>  Status=7;”Couldn’t connect to server”，解决方法是手动下载ippicv_linux_20151201.tgz，并替换掉opencv-3.1.0/3rdparty/ippicv/downloads/linux-*下的相应文件即可，可以直接从该地址下载：<a href="https://raw.githubusercontent.com/Itseez/opencv_3rdparty/81a676001ca8075ada498583e4166079e5744668/ippicv/ippicv_linux_20151201.tgz" target="_blank" rel="noopener">ippicv_linux_20151201.tgz</a></p>
 <p>在使用的时候，在CMakelists.txt中，如要用3，在find_package前指明路径：<br><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">set</span>(OpenCV_DIR /usr/local/opencv3/share/OpenCV)</span><br><span class="line"><span class="keyword">find_package</span>(OpenCV <span class="number">3</span> REQUIRED)</span><br></pre></td></tr></table></figure></p>
@@ -592,7 +593,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -603,7 +604,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -614,7 +615,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-count">16</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
