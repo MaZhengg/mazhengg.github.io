@@ -91,7 +91,7 @@
 <meta property="og:image" content="http://yoursite.com/2019/03/29/世界、相机、图像和像素坐标之间的转换/世界到相机.png">
 <meta property="og:image" content="http://yoursite.com/2019/03/29/世界、相机、图像和像素坐标之间的转换/相机到图像.png">
 <meta property="og:image" content="http://yoursite.com/2019/03/29/世界、相机、图像和像素坐标之间的转换/图像到像素.png">
-<meta property="og:updated_time" content="2019-03-29T14:12:59.411Z">
+<meta property="og:updated_time" content="2019-03-29T14:18:55.866Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="世界、相机、图像和像素坐标之间的转换">
 <meta name="twitter:description" content="主要对摄像机成像原理和世界、相机、图像和像素坐标之间的转换关系进行介绍。">
@@ -429,14 +429,14 @@
 <h1 id="世界坐标系和相机坐标系之间的转换"><a href="#世界坐标系和相机坐标系之间的转换" class="headerlink" title="世界坐标系和相机坐标系之间的转换"></a>世界坐标系和相机坐标系之间的转换</h1><img src="/2019/03/29/世界、相机、图像和像素坐标之间的转换/世界到相机.png" width="600" height="468" title="图2 世界坐标系到相机坐标系变换">
 <p>从世界坐标系变换到相机坐标系属于刚体变换：即物体不会发生形变，只需要进行旋转和平移。<br>$R$:表示旋转矩阵；<br>$T$:表示平移矩阵。<br>$$\left[\begin{matrix}X_c\\ Y_c \\Z_c\end{matrix}\right] = R \left[\begin{matrix} X_w \\Y_w \\Z_w\end{matrix}\right]+T$$</p>
 <p>以齐次坐标表示：<br>$$\left[\begin{matrix}X_c\\ Y_c \\Z_c\\1\end{matrix}\right] = \left[\begin{matrix}R_{3\times 3}&amp; T_{3\times 1}\\ 0 &amp; 1\end{matrix}\right] \left[\begin{matrix} X_w \\Y_w \\Z_w\\1 \end{matrix}\right]+T$$</p>
-<h1 id="相机坐标系到图像坐标系之间的转换"><a href="#相机坐标系到图像坐标系之间的转换" class="headerlink" title="相机坐标系到图像坐标系之间的转换"></a>相机坐标系到图像坐标系之间的转换</h1><img src="/2019/03/29/世界、相机、图像和像素坐标之间的转换/相机到图像.png" width="600" height="468" title="图2 相机坐标系到图像坐标系变换">
+<h1 id="相机坐标系到图像坐标系之间的转换"><a href="#相机坐标系到图像坐标系之间的转换" class="headerlink" title="相机坐标系到图像坐标系之间的转换"></a>相机坐标系到图像坐标系之间的转换</h1><img src="/2019/03/29/世界、相机、图像和像素坐标之间的转换/相机到图像.png" width="500" height="368" title="图2 相机坐标系到图像坐标系变换">
 <p>从相机坐标系到图像坐标系是从3D转换到2D，属于透视投影关系，以下是推导过程：</p>
 <p>$\triangle ABO_c\sim\triangle oCO_c$<br>$\triangle PBO_c\sim\triangle pCO_c$</p>
 <p>$$\frac{AB}{oC}=\frac{AO_c}{oO_c}=\frac{PB}{pC}=\frac{X_c}{x}=\frac{Z_c}{f}=\frac{Y_c}{y}$$</p>
 <p>$$x=f\frac{X_c}{Z_c},y=\frac{Y_c}{Z_c}$$</p>
 <p>$$Z_c\left[\begin{matrix}x\\ y\\ 1\end{matrix}\right]=\left[\begin{matrix}f&amp;0&amp;0&amp;0\\ 0&amp;f&amp;0&amp;0\\ 0&amp;0&amp;1&amp;0\end{matrix}\right]\left[\begin{matrix}X_c\\ Y_c\\ Z_c\\ 1\end{matrix}\right]$$</p>
 <p>很明显，$Z_c$是空间点$P$的深度信息。此时，投影点$p$的单位还是mm，并不是像素pixel，需要进一步转换到像素坐标系。</p>
-<h1 id="图像坐标系到像素坐标系之间的转换"><a href="#图像坐标系到像素坐标系之间的转换" class="headerlink" title="图像坐标系到像素坐标系之间的转换"></a>图像坐标系到像素坐标系之间的转换</h1><p>像素坐标系和图像坐标系都在成像平面上，只是各自的原点和度量单位不一样。图像坐标系的原点为相机光轴与成像平面的交点，通常情况下是成像平面的中点或者叫principal point。图像坐标系的单位是mm，是物理单位，而像素坐标系的单位是pixel，我们平常描述一个像素点都是几行几列。所以这两者之间的转换关系如下：<br><img src="/2019/03/29/世界、相机、图像和像素坐标之间的转换/图像到像素.png" width="600" height="468" title="图2 图像坐标系到像素坐标系变换"></p>
+<h1 id="图像坐标系到像素坐标系之间的转换"><a href="#图像坐标系到像素坐标系之间的转换" class="headerlink" title="图像坐标系到像素坐标系之间的转换"></a>图像坐标系到像素坐标系之间的转换</h1><p>像素坐标系和图像坐标系都在成像平面上，只是各自的原点和度量单位不一样。图像坐标系的原点为相机光轴与成像平面的交点，通常情况下是成像平面的中点或者叫principal point。图像坐标系的单位是mm，是物理单位，而像素坐标系的单位是pixel，我们平常描述一个像素点都是几行几列。所以这两者之间的转换关系如下：<br><img src="/2019/03/29/世界、相机、图像和像素坐标之间的转换/图像到像素.png" width="400" height="268" title="图2 图像坐标系到像素坐标系变换"></p>
 <p>$$u=\frac{x}{dx}+u_0$$<br>$$v=\frac{y}{dy}+v_0$$</p>
 <p>其中，$dx$和$dy$分别表示每一列和每一行分别代表多少mm，即$1pixel = dx mm$。</p>
 <p>以齐次坐标形式表示为：</p>
