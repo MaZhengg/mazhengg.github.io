@@ -91,7 +91,7 @@
 <meta property="og:image" content="http://yoursite.com/2019/03/29/世界、相机、图像和像素坐标之间的转换/世界到相机.png">
 <meta property="og:image" content="http://yoursite.com/2019/03/29/世界、相机、图像和像素坐标之间的转换/相机到图像.png">
 <meta property="og:image" content="http://yoursite.com/2019/03/29/世界、相机、图像和像素坐标之间的转换/图像到像素.png">
-<meta property="og:updated_time" content="2019-03-29T14:18:55.866Z">
+<meta property="og:updated_time" content="2019-03-30T14:18:14.456Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="世界、相机、图像和像素坐标之间的转换">
 <meta name="twitter:description" content="主要对摄像机成像原理和世界、相机、图像和像素坐标之间的转换关系进行介绍。">
@@ -428,7 +428,7 @@
 </ul>
 <h1 id="世界坐标系和相机坐标系之间的转换"><a href="#世界坐标系和相机坐标系之间的转换" class="headerlink" title="世界坐标系和相机坐标系之间的转换"></a>世界坐标系和相机坐标系之间的转换</h1><img src="/2019/03/29/世界、相机、图像和像素坐标之间的转换/世界到相机.png" width="600" height="468" title="图2 世界坐标系到相机坐标系变换">
 <p>从世界坐标系变换到相机坐标系属于刚体变换：即物体不会发生形变，只需要进行旋转和平移。<br>$R$:表示旋转矩阵；<br>$T$:表示平移矩阵。<br>$$\left[\begin{matrix}X_c\\ Y_c \\Z_c\end{matrix}\right] = R \left[\begin{matrix} X_w \\Y_w \\Z_w\end{matrix}\right]+T$$</p>
-<p>以齐次坐标表示：<br>$$\left[\begin{matrix}X_c\\ Y_c \\Z_c\\1\end{matrix}\right] = \left[\begin{matrix}R_{3\times 3}&amp; T_{3\times 1}\\ 0 &amp; 1\end{matrix}\right] \left[\begin{matrix} X_w \\Y_w \\Z_w\\1 \end{matrix}\right]+T$$</p>
+<p>以齐次坐标表示：<br>$$\left[\begin{matrix}X_c\\ Y_c \\Z_c\\1\end{matrix}\right] = \left[\begin{matrix}R_{3\times 3}&amp; T_{3\times 1}\\ 0 &amp; 1\end{matrix}\right] \left[\begin{matrix} X_w \\Y_w \\Z_w\\1 \end{matrix}\right]$$</p>
 <h1 id="相机坐标系到图像坐标系之间的转换"><a href="#相机坐标系到图像坐标系之间的转换" class="headerlink" title="相机坐标系到图像坐标系之间的转换"></a>相机坐标系到图像坐标系之间的转换</h1><img src="/2019/03/29/世界、相机、图像和像素坐标之间的转换/相机到图像.png" width="500" height="368" title="图2 相机坐标系到图像坐标系变换">
 <p>从相机坐标系到图像坐标系是从3D转换到2D，属于透视投影关系，以下是推导过程：</p>
 <p>$\triangle ABO_c\sim\triangle oCO_c$<br>$\triangle PBO_c\sim\triangle pCO_c$</p>
@@ -516,8 +516,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/03/30/成像畸变/" rel="prev" title="成像畸变">
-                成像畸变 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/03/30/成像畸变/" rel="prev" title="成像畸变校正">
+                成像畸变校正 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
